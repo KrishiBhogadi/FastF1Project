@@ -11,7 +11,20 @@ def get_valid_int_input(prommpt):
         except ValueError:
             print("Unexpected error. Please try again.")       
 
-
+def get_valid_int_input(prommpt, min_value=None, max_value=None):
+    while True:
+        try:
+            user_input = input(prommpt)
+            value = int(user_input)
+            if (min_value is not None and value < min_value) or (max_value is not None and value > max_value):
+                print(f"Input must be between {min_value} and {max_value}. Please try again.")
+                continue
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+        except ValueError:
+            print("Unexpected error. Please try again.")
+            
 def get_valid_session_type(prommpt):
     valid_session_types = ['FP1', 'FP2', 'FP3', 'Q', 'R']
     while True:
